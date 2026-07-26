@@ -7,6 +7,8 @@ and getaddrinfo method to resolve subdomains to their IPv4 addresses without blo
 
 import asyncio
 import socket
+import random
+import string
 
 async def resolve_subdomain(subdomain: str, semaphore: asyncio.Semaphore) -> tuple: # Resolves subdomains to IPs
     async with semaphore: # Limits concurrent connections to avoid too many requests
@@ -43,3 +45,17 @@ async def resolve_subdomains_concurrently(subdomains: list, max_concurrency: int
             resolved_map[subdomain] = ips
             
     return resolved_map
+
+async def check_wildcard(domain: str) -> bool:
+    """
+    Detects if the domain has a wildcard DNS record by resolving a random subdomain.
+    """
+
+    # Generate a random 12-character subdomain
+    random_sub = ''.join(random.choices(string.ascii_lowercase + string.digits, k=12))
+    test_domain = f"{random_sub}.{domain}"
+    
+    semaphore = asyncio.Semaphore(1)
+    _, ips = await resolve_subdomain(test_domain, semaphore)
+    
+    return len(ips) > 0

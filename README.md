@@ -171,7 +171,7 @@ Target (eg: google.com or 8.8.8.8): 8.8.8.8
 - [x] **Phase 2:** Active DNS Resolution (Subdomains resolved to unique IPv4 addresses concurrently).
 - [x] **Phase 3:** Shodan Port & Vulnerability Scanning (Open ports, services, and CVEs retrieved per IP with rate-limit protection).
 - [x] **Phase 4:** Export & Reporting Utilities (Save results directly to JSON, CSV, TXT, and HTML formats).
-- [ ] **Phase 5:** Recon Enhancements (CIDR block support, DNS wildcard detection, active fallback scanner).
+- [x] **Phase 5:** Recon Enhancements (CIDR block support, DNS wildcard detection, active fallback scanner).
 
 ---
 
