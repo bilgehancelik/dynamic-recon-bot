@@ -112,6 +112,7 @@ python recon.py -t google.com -o results.html -f html
 - `-t, --target`: Target domain or IP address.
 - `-o, --output`: Filepath to save the report (e.g., `report.json`).
 - `-f, --format`: Export format (`json`, `csv`, `txt`, `html`).
+- `--no-shodan`: Skip Shodan vulnerability scanning phase (saves API credits).
 
 **Domain Mode:** Runs the full pipeline — subdomain enumeration → DNS resolution → Shodan scan.
 

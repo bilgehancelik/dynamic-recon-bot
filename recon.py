@@ -423,6 +423,7 @@ async def main():
     parser.add_argument("-t", "--target", help="The target domain or IP to scan (e.g., google.com or 8.8.8.8).")
     parser.add_argument("-o", "--output", help="Filepath to save scan results")
     parser.add_argument("-f", "--format", choices=["json", "csv", "txt", "html"], help="Output format (json, csv, txt, html)")
+    parser.add_argument("--no-shodan", action="store_true", help="Skip Shodan vulnerability scanning phase")
     
     args = parser.parse_args()
     target = args.target
@@ -510,7 +511,9 @@ async def main():
             unique_ips.add(target)
 
         # Phase 3: Shodan Scanning
-        if unique_ips and SHODAN_API_KEY:
+        if args.no_shodan:
+            print("\n[*] --no-shodan flag detected. Skipping Shodan scan phase.")
+        elif unique_ips and SHODAN_API_KEY:
             # Quota Protection: Ask for confirmation if too many IPs
             if is_interactive and len(unique_ips) > 20:
                 print(f"\n[!] WARNING: You are about to scan {len(unique_ips)} IPs with Shodan.")
