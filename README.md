@@ -2,7 +2,7 @@
 
 An automated, asynchronous network reconnaissance and OSINT (Open Source Intelligence) tool built with Python and `httpx`. Designed for security professionals and penetration testers to gather assets quickly and efficiently.
 
-> ⚠️ **Note:** This project is currently in active development. The current version implements **Phase 1 (Passive Subdomain Enumeration)**, **Phase 2 (DNS Resolution)**, **Phase 3 (Shodan Port & Vulnerability Scanning)**, and **Phase 4 (Export & Reporting Utilities)**.
+> ✅ **Status:** Complete & Fully Functional. Features passive subdomain enumeration, DNS resolution, Shodan vulnerability scanning, active fallback port scanning, and multi-format export reporting.
 
 ---
 
@@ -14,8 +14,11 @@ An automated, asynchronous network reconnaissance and OSINT (Open Source Intelli
   - 🔍 **crt.sh:** Certificate Transparency log parser.
   - 🎯 **HackerTarget:** Host search utility.
   - 🛡️ **AlienVault OTX:** Passive DNS indicator lookup.
+  - 📜 **Wayback Machine:** Archived endpoint subdomain parser.
 - **Asynchronous DNS Resolution:** Resolves discovered subdomains to their IPv4 addresses concurrently using `asyncio.getaddrinfo`, with a configurable concurrency limit to avoid overwhelming DNS servers.
-- **Shodan Integration:** Scans resolved IPs against the Shodan REST API to retrieve open ports, running services, and known CVE vulnerabilities. Includes rate-limit protection with a 1-second delay between requests.
+- **Shodan & Vulnerability Scanning:** Scans resolved IPs against the Shodan REST API to retrieve open ports, running services, and known CVE vulnerabilities.
+- **Active Fallback Port Scanner:** Includes a fast, asynchronous socket-based port scanner for direct port probing.
+- **Multi-Format Export & Reporting:** Export findings to **JSON**, **CSV**, **TXT**, or clean interactive **HTML** reports.
 - **Robust Error Tolerance:** Handles server timeouts, rate limits (429), and gateway errors (502) gracefully without crashing the pipeline.
 - **Safe Secrets Management:** Securely loads sensitive API keys from `.env` using `python-dotenv`.
 - **Automatic Sanitization:** Deduplicates subdomains and cleans wildcards (`*.`), trailing spaces, and case disparities.
