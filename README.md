@@ -29,7 +29,7 @@ An automated, asynchronous network reconnaissance and OSINT (Open Source Intelli
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/bilgehan0345/dynamic-recon-bot.git
+git clone https://github.com/bilgehancelik/dynamic-recon-bot.git
 cd dynamic-recon-bot
 ```
 
